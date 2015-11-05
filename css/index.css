@@ -1,0 +1,94 @@
+<style type="text/css">
+ input.rowList
+{
+        resize: horizontal;
+        width: 50px;
+}
+
+legend
+{
+	font-style:bold;
+	font-size:50%;
+}
+.logo{
+margin: 0px 10px 10px 500px;
+font:italic bold 22px/30px Georgia, serif;
+font-size:400%;
+display:box;
+height:100;
+width:100;
+background-image: url('Car.jpg');
+background-size:310px 120px;
+background-repeat:no-repeat;
+text-decoration:none !important;
+}
+a:visited,a:hover,a:active
+{
+	color:black;
+}
+form
+{
+margin-left:5px;
+}
+
+a
+{ 
+text-decoration:none !important;
+}
+ul
+{
+list-style:none;
+display:inline;
+}
+ul,ul a:link,ul a:hover,ul a:active
+{
+color:black;
+font-weight:bold;
+}
+li
+{
+padding:2px;
+margin:0px 20px 20px 20px;
+display:box;
+background-color:red;
+float:left;
+font-size:110%;
+}
+li:hover
+{
+background-color:green;
+}
+.textfield
+{
+border-width: 1px;
+border-style: solid;
+border-color: #999999;
+height:15px;
+width :120px;
+margin-left:5px;
+}
+.textfield1
+{
+width:200px;
+border-width: 1px;
+border-style: solid;
+border-color: #999999;
+margin-left:5px;
+}
+textfield:hover,textfield:focus
+{
+    border-color: #64acd8;
+    border-width: 3px;
+    box-shadow:5px 5px 5px #00ff00;
+}
+textfield1:hover,textfield:focus
+{
+    border-color: #64acd8;
+    border-width: 3px;
+}
+.button1
+{
+height:30px;
+width:40px;
+}
+</style>

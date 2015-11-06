@@ -97,7 +97,7 @@ else echo "<div stlye='color:red'><b>Здравей, ".$_COOKIE["name"]."!</b></
 	<div style="margin-left:500px;color:red">
 	<label>Търсене:<input type="text" id="word" class="textfield1" name="word"/></label>
 <label>Марка:&nbsp
-<select  name="marka" id="marka">
+<select  name="model" id="model">
 	<option></option>
 	<option>Audi</option>
     <option>BMW</option>
@@ -116,7 +116,7 @@ else echo "<div stlye='color:red'><b>Здравей, ".$_COOKIE["name"]."!</b></
 </label>
 <label>
 Година :&nbsp
-<select id="godina">
+<select id="year">
 	<?php
 	for($i=1992;$i<2013;$i++)
 	echo "<option>След".$i."</option>";
@@ -135,7 +135,7 @@ else echo "<div stlye='color:red'><b>Здравей, ".$_COOKIE["name"]."!</b></
 	</form>
 	<hr style="margin-top:200px"width=80% color=red align=center>
 	<p align=center style="font-weight:1000;font-size:120%;color:red"> ALEX & TEQ SITE</p>
-<script src="ajax1.js"></script>
+<script src="mainEvents.js"></script>
 <script>
 $("#subm").click(function(){
 	var msgc=$("#textarea").val();

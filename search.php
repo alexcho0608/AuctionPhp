@@ -1,12 +1,11 @@
 <?php 
-	if(isset($_GET["word"]))
+if(isset($_GET["word"]))
 {
-    echo "1";
-	$con=mysqli_connect("localhost","root","","test");
+    $con = mysqli_connect("localhost","root","","");
     if(mysqli_connect_errno($con))
-    	{ echo "Failed to connect".mysqli_connect_error();}
-    $req="SELECT * FROM carsinfo ";
-    $text=mysqli_real_escape_string($_GET["word"]);
+    	 echo "Failed to connect".mysqli_connect_error();
+    $sqlMsg = "SELECT * FROM carsinfo ";
+    $text = mysqli_real_escape_string($_GET["word"]);
     switch($_GET['opt'])
     {
     	case "Модел":$req += "WHERE Model='$text'";break;
@@ -14,11 +13,10 @@
     	case "Марка" :$req += "WHERE Car='$text'";break;
     	case "Цена"  :$req += "WHERE minprice BETWEEN ('$text'-2000) AND ('$text+2000)";
     }
-    $answ=mysqli_connect($con,$req);
-    $respond;
-    while($res=mysqli_fetch_array($answ))
+    $answ = mysqli_connect($con,$req);
+    while($res = mysqli_fetch_array($answ))
     {
-    	$respond=""
+    	$respond = "";
     }
    echo $respond;
 }

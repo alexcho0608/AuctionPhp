@@ -3,8 +3,8 @@
 <head><title>Test page</title></head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/index.css">
-<script src="scripts/check.js"></script>
 <script src="scripts/jquery-2.0.2.js"></script>
+<script src= "scripts/ajax1.js"></script>
 <?php
 if(!isset($_COOKIE["name"]))
 {
@@ -12,48 +12,32 @@ if(!isset($_COOKIE["name"]))
 }
 ?>
 <script>
-$("#Word").keypress(function(e)
-{
-	if(e.which==13)
-	{	
-		if(window.XMLHttpRequest)
-		{
-		 msg=new XMLHttpRequest;
+// get history of bets user has participated in
+$("body").ready(function(e){
+	$.ajax({
+		url:"search.php",
+		type:"POST",
+		dataType:"html",
+		success:function(result){
+			$("#list").html(result);
 		}
-		else
-		{
-			msg=new ActiveXObjext("Microsoft.XMLHttp");
-		}
-		var option=$("opt").val();
-		var tekst=$("Word").val();
-		if(tekst!="")
-		{
-			msg.open("GET","Search.php?word="+tekst+&"opt="+option,true);
-			msg.send();
-			msg.onreadystatechange=function()
-			{
-				if(msg.readyState==4&&msg.status==200)
-				{
-					var response=msg.responseText;
-					$("list").html("<font color=red>haha</font>");
-				}
-			}
-		}
-	}
+	});
 });
 </script>
 <body bgcolor=#000000>
-<div  style="display:inline">
+<div  id="header">
 	<a href="index.php" class="logo">CarsBet</a>
 </div>
 <table style="width:100%;margin-top:20px;background-color:white;"><tr>
 <td style="width:27%;">
 <?php
-if(!isset($_COOKIE["name"])) echo "Добре дошъл,гост!";
-else echo "<div stlye='color:red'><b>Здрасти".$_COOKIE["name"]."</b></div>";
+if(!isset($_COOKIE["name"])) 
+	echo "Добре дошъл,гост!";
+else 
+	echo "<div stlye='color:red'><b>Здрасти, ".$_COOKIE["name"]."!</b></div>";
 ?>
 </td>
-	<td style="width:60%;">
+<td style="width:60%;">
 <p>
 <ul style="margin:0px 0px 0px 30px;padding:0px 0px 0px 50px;" class="nolines">
 	<li><a class="menu" href="index.php">Начало</a></li>
@@ -82,12 +66,10 @@ else echo "<div stlye='color:red'><b>Здрасти".$_COOKIE["name"]."</b></div
 </td>
 <td  id="clock" style="width:20%">
  <?php
- echo "<div style='font-weight:bold'>".date("Y-M-D")."</div>";
+ echo "<div style='font-weight:bold'>".date("Y-m-d")."</div>";
  ?>
 </td></tr></table>
-
-
-
+<div id="list"></div>
 	<hr style="margin-top:300px"width=80% color=red align=center><br>
 	<p align=center style="font-weight:1000;font-size;color:red"> ALEX & TEQ SITE</p>
 </body>

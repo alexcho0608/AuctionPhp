@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+	//event on adding a new bid
 	$("body").on("keypress","input.myClass",function(event){
 		if(event.which==13)
 		{
@@ -33,6 +34,7 @@ $(document).ready(function()
 			});
 		}
 	});
+	//event on searching bids
 	$("#word").keypress(function(event){
 		if(event.which==13)
 		{
@@ -50,6 +52,7 @@ $(document).ready(function()
 			});
 		}
 	});
+	//event on getting models for car brand
 	$("#marka").change(function(){
 		var brand=$("#marka").val();
 		$.ajax({

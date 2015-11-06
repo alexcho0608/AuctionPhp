@@ -22,21 +22,22 @@
 		<td>
 		<div style="align:center">
 			<form method="POST" action="reghelp.php">
-            <label>Име:&nbsp&nbsp&nbsp &nbsp&nbsp <input type=text name="name"></input></label> <br>
-            <label>Парола:&nbsp <input type=password name="password"></input></label><br> 
-            <label> Е-майл:&nbsp <input type=text name="e-mail"></input></label> <br><br><br>
-            <center><input type=submit value="Регистрирай се"></intput></center>
+		            <label>Име:&nbsp&nbsp&nbsp &nbsp&nbsp <input type=text name="username"></input></label> <br>
+		            <label>Парола:&nbsp <input type=password name="password"></input></label><br> 
+		            <label> Е-майл:&nbsp <input type=text name="email"></input></label> <br><br><br>
+		            <center><input type=submit value="Регистрирай се"></intput></center>
 			</from>
-		</td>
 		</div>
+		</td>
 	</tr>
 	<tr>
 	<td>
-		<?php
-        if($_SESSION['views']>=2) echo "<div style='text-align:center;text-weight:bold;color:blue;'>Грешно потребителско име или е-майл</div>";
-		?>
+	<?php
+        if($_SESSION['views'] >= 2) 
+        	echo "<div style='text-align:center;text-weight:bold;color:blue;'>Грешно потребителско име или е-майл</div>";
+	?>
 	</td>
-    </tr>
+    	</tr>
 </table>
 </body>
 </html>

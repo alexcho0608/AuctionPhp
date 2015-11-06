@@ -1,3 +1,4 @@
+//test file, not used in the website
 <script>
 function check(var ip){
   var msg;

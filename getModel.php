@@ -1,20 +1,20 @@
 <?php
-if(isset($_POST["marka"]))
+if(isset($_POST["model"]))
 {
-$con=mysqli_connect("localhost","root","","test");
+$con = mysqli_connect("localhost","root","","");
 if(mysqli_connect_errno($con))
 { 
 	echo "Failed to connect".mysqli_connect_error();
 }
-$a=mysqli_real_escape_string($con,$_POST["marka"]);
-$msg="SELECT * FROM  modelbrand WHERE brand='$a' ";
-$answ=mysqli_query($con,$msg);
-$str="";
-while ( $row=mysqli_fetch_array($answ)) 
+$model = mysqli_real_escape_string($con,$_POST["model"]);
+$sqlMsg = "SELECT * FROM  modelbrand WHERE brand='$model' ";
+$models = mysqli_query($con,$sqlMsg);
+$resultStr = "";
+while ( $row = mysqli_fetch_array($models)) 
 	{
-	$str=$str."<option>".$row["model"]."</option>";
+	$resultStr = $resultStr . "<option>" . $row["model"] . "</option>";
 	}
-echo $str;
+echo $resultStr;
 mysqli_close($con);
 }
 ?>

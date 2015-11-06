@@ -2,33 +2,31 @@ $(document).ready(function()
 {
 	//event on adding a new bid
 	$("body").on("keypress","input.myClass",function(event){
-		if(event.which==13)
+		if(event.which == 13)
 		{
-			var text=document.activeElement;
-			var t=text;
-			text=$(text).val();
-			var row=$(t).parent().parent();
-			var id1=$(row).children(" #id");
-			var buyer=$(row).children("#buyer");
-			id1=$(id1).text();
-			var price1=$(row).children("#price");
-			var p=price1;
-			price1=$(price1).text();
-			var name1=document.cookie;
-			name1=name1.substr(name1.indexOf("name="));
-			name1=name1.split(';');
-			name1=name1[0].substr(name1[0].indexOf('=')+1);
-			$(t).val("");
+			var domInputField = document.activeElemet;
+			var raisePrice = $(domInputField).val();
+			var tableRow = $(domInputField).parent().parent();
+			var id = $(tableRow).children(" #id");
+			var buyerDom = $(tableRow).children("#buyer");
+			id = $(id).text();
+			var priceDom = $(tableRow).children("#price");
+			var currentPrice = $(priceDom).text();
+			var cookieData = document.cookie;
+			var namePartStr = cookieData.substr(name1.indexOf("name=")).split(';')[0];
+			var name = namePartStr[0].substr(namePartStr[0].indexOf('=')+1);
+			$(domInputFIeld).val("");
 			$.ajax({
-			 	type:"POST",
-				url:"Update.php",
-			 	data:{id:id1 , name:name1 ,price:text ,oldprice:price1} ,
-			 	dataType:"html",
+			 	type : "POST",
+				url : "Update.php",
+			 	data : {id : id, name : name, price : raisePrice, oldprice : currentPrice},
+			 	dataType : "html",
 			 	success:function(result) 
 			 	{
-			 	    var newresult=result.split(';');
-			 		$(buyer).text(newresult[0]);
-			 		$(p).text(newresult[1]);
+			 	//update price and buyer for bid
+			 	    var newresult = result.split(';');
+			 		$(buyerDom).text(newresult[0]);
+			 		$(priceDom).text(newresult[1]);
 					
 			 	}
 			});
@@ -36,17 +34,17 @@ $(document).ready(function()
 	});
 	//event on searching bids
 	$("#word").keypress(function(event){
-		if(event.which==13)
+		if(event.which == 13)
 		{
-			var marka=$('#marka').val();
-			var model=$('#model').val();
-			//var year=document.getElementById("godina").value.substr(4);
+			var brand = $('#brand').val();
+			var model = $('#model').val();
+			var year = document.getElementById("year").value.substr(4);
 			$.ajax({
-				type:"POST",
-				url:"getSearch.php",
-			 	data:{brandp:marka , modelp:model } ,
-			 	dataType:"html",
-			 	success:function(result){
+				type : "POST",
+				url : "getSearch.php",
+			 	data : {brand : brand, model : model, year : year } ,
+			 	dataType : "html",
+			 	success : function(result){
 			 		$("#list").html(result);
 			 	}
 			});
@@ -54,11 +52,11 @@ $(document).ready(function()
 	});
 	//event on getting models for car brand
 	$("#marka").change(function(){
-		var brand=$("#marka").val();
+		var brand=$("#brand").val();
 		$.ajax({
 			type:"POST",
 			url:"getModel.php",
-			data:{marka: brand},
+			data:{brand : brand},
 			dataType:"html",
 			success:function(result)
 			{
